@@ -12,6 +12,8 @@ namespace gol {
             Game();
             ~Game();
 
+            int setZoomLevel(int zoom);
+
             void refresh();
 
         private:
@@ -20,6 +22,8 @@ namespace gol {
 
             brd::Pixel m_aliveCell = brd::Pixel(0.0f, 0.0f, 0.0f);
             brd::Pixel m_deadCell = brd::Pixel(1.0f, 1.0f, 1.0f);
+
+            int m_zoom = 0;
 
             void drawBoardToDisplay();
     };

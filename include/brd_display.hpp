@@ -33,7 +33,8 @@ namespace brd {
             void getViewportDimensions(int &width, int &height);
             void getRasterDimensions(int &width, int &height);
 
-            // !!! updateRasterDimensions needs to be called after this !!!
+            float getAspectRatio();
+
             void setRasterDimensions(int width, int height);
 
             void setWindowName(std::string name);

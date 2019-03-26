@@ -23,8 +23,10 @@ int main(int argc, const char* argv[]) {
     gol::Game game;
 
     while(!state.quit) {
-        // + pre-rendering + = + = + = + = + = + = + = + = + = + = + = + = + = +
         handleEvents();
+
+        // gets assigned the return value b/ zoom can hit a limit
+        state.zoom = game.setZoomLevel(state.zoom);
 
         game.refresh();
     }
