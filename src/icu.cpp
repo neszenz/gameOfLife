@@ -10,11 +10,28 @@ static void handleKeyEvent(SDL_Event &e) {
         case SDLK_SPACE:
             state.play = true;
             break;
+        case SDLK_r:
+            state.reset = true;
+            break;
+        // zoom
         case SDLK_k:
             state.zoom--;
             break;
         case SDLK_j:
             state.zoom++;
+            break;
+        // movement
+        case SDLK_UP:
+            state.y_pos++;
+            break;
+        case SDLK_LEFT:
+            state.x_pos++;
+            break;
+        case SDLK_DOWN:
+            state.y_pos--;
+            break;
+        case SDLK_RIGHT:
+            state.x_pos--;
             break;
     }
 }

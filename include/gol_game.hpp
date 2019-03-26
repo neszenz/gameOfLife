@@ -13,6 +13,7 @@ namespace gol {
             ~Game();
 
             int setZoomLevel(int zoom);
+            void setPosition(int x, int y);
 
             void playOneRound();
 
@@ -26,6 +27,8 @@ namespace gol {
             brd::Pixel m_deadCell = brd::Pixel(1.0f, 1.0f, 1.0f);
 
             int m_zoom = 0;
+            int m_x_offset = 2;
+            int m_y_offset = 5;
 
             void drawBoardToDisplay();
     };

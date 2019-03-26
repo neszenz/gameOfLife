@@ -23,10 +23,21 @@ int main(int argc, const char* argv[]) {
     gol::Game game;
 
     while(!state.quit) {
+
         handleEvents();
+
+        if (state.reset) {
+            state.zoom = 1;
+            state.x_pos = 0;
+            state.y_pos = 0;
+            state.reset = false;
+        }
 
         // gets assigned the return value b/ zoom can hit a limit
         state.zoom = game.setZoomLevel(state.zoom);
+
+        // set position offset for moving across the game board
+        game.setPosition(state.x_pos, state.y_pos);
 
         if (state.play) {
             game.playOneRound();

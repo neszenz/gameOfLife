@@ -27,6 +27,10 @@ int Game::setZoomLevel(int zoom) {
     m_zoom = (zoom > -DEFAULT_ZOOM_LEVEL)? zoom : -DEFAULT_ZOOM_LEVEL+1;
     return m_zoom;
 }
+void Game::setPosition(int x, int y) {
+    m_x_offset = x;
+    m_y_offset = y;
+}
 
 void Game::playOneRound() {
     m_board.computeNextGeneration();
@@ -38,7 +42,7 @@ void Game::refresh() {
     float aspect = m_display.getAspectRatio();
 
     // using odd dimensions to always have one center cell
-    int odd_x = 2 * int(y*aspect)+1;
+    int odd_x = 2 * int(y*aspect) + 1;
     int odd_y = 2 * y + 1;
 
     m_display.setRasterDimensions(odd_x, odd_y);
@@ -59,10 +63,10 @@ void Game::drawBoardToDisplay() {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             // map board origin to texture center
-            int x_offset = width / 2;
-            int y_offset = height / 2;
+            int x_board = (width / 2) + m_x_offset;
+            int y_board = (height / 2) + m_y_offset;
 
-            if (m_board.isAlive(x - x_offset, y - y_offset)) {
+            if (m_board.isAlive(x - x_board, y - y_board)) {
                 pixels[y * width + x] = m_aliveCell.toUint32();
             } else {
                 pixels[y * width + x] = m_deadCell.toUint32();
