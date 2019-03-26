@@ -7,6 +7,9 @@ static void handleKeyEvent(SDL_Event &e) {
         case SDLK_ESCAPE:
             state.quit = true;
             break;
+        case SDLK_SPACE:
+            state.play = true;
+            break;
         case SDLK_k:
             state.zoom--;
             break;

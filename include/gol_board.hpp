@@ -24,12 +24,21 @@ namespace gol {
             void setAlive(int x, int y);
             void setDead(int x, int y);
 
+            void computeNextGeneration();
+
         private:
             struct Cell {
                     int x;
                     int y;
                     bool isAlive = true;
             };
+
+            struct BoundingBox {
+                int x_min = 0;
+                int x_max = 0;
+                int y_min = 0;
+                int y_max = 0;
+            } m_boundingBox;
 
             std::vector<Cell> m_cells;
 

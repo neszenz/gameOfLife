@@ -28,6 +28,11 @@ int main(int argc, const char* argv[]) {
         // gets assigned the return value b/ zoom can hit a limit
         state.zoom = game.setZoomLevel(state.zoom);
 
+        if (state.play) {
+            game.playOneRound();
+            state.play = false;
+        }
+
         game.refresh();
     }
 

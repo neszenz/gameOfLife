@@ -14,6 +14,8 @@ namespace gol {
 
             int setZoomLevel(int zoom);
 
+            void playOneRound();
+
             void refresh();
 
         private:

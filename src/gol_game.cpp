@@ -9,10 +9,16 @@ using namespace gol;
 
 Game::Game() {
     m_display.setWindowName("Conway's Game of Life");
+    m_display.showMetaCounter(true);
 
     m_board.setAlive(-1, 0);
     m_board.setAlive(0, 0);
     m_board.setAlive(1, 0);
+
+    m_board.setAlive(-10, -10);
+    m_board.setAlive(10, -10);
+    m_board.setAlive(-10, 10);
+    m_board.setAlive(10, 10);
 }
 Game::~Game() {
 }
@@ -20,6 +26,10 @@ Game::~Game() {
 int Game::setZoomLevel(int zoom) {
     m_zoom = (zoom > -DEFAULT_ZOOM_LEVEL)? zoom : -DEFAULT_ZOOM_LEVEL+1;
     return m_zoom;
+}
+
+void Game::playOneRound() {
+    m_board.computeNextGeneration();
 }
 
 void Game::refresh() {

@@ -1,5 +1,7 @@
 #include "gol_board.hpp"
 
+#include <iostream>
+
 using namespace gol;
 
 Board::Board() {
@@ -38,6 +40,12 @@ Board::Cell* Board::findCell(int x, int y) {
 }
 void Board::insertCell(int x, int y, bool isAlive) {
     m_cells.emplace_back(Board::Cell({.x = x, .y = y, .isAlive = isAlive}));
+
+    // update bounding box
+    m_boundingBox.x_min = (x < m_boundingBox.x_min)? x : m_boundingBox.x_min;
+    m_boundingBox.x_max = (x > m_boundingBox.x_max)? x : m_boundingBox.x_max;
+    m_boundingBox.y_min = (y < m_boundingBox.y_min)? y : m_boundingBox.y_min;
+    m_boundingBox.y_max = (y > m_boundingBox.y_max)? y : m_boundingBox.y_max;
 }
 
 void Board::setCellStatus(int x, int y, int isAlive) {
@@ -47,4 +55,8 @@ void Board::setCellStatus(int x, int y, int isAlive) {
     } else {
         this->insertCell(x, y, isAlive);
     }
+}
+
+void Board::computeNextGeneration() {
+    std::cout << "next gen" << std::endl;
 }
