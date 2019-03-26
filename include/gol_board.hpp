@@ -1,6 +1,7 @@
 /** game of life - game board
  * This game board keeps track of all Cell data, where they are and whether they
- * are alive or not.
+ * are alive or not. There are no boundaries and cells are dynamically allocated
+ * by which this board can practically be considered infinite.
  * Currently it is implemented for 2-dimensional boards only and not optimised
  * for performance, but the general abstraction is meant to easily improve those
  * aspects.

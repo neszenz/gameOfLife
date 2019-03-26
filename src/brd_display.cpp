@@ -7,8 +7,8 @@ using namespace brd;
 // hard coded config
 #define PIXEL_FORMAT SDL_PIXELFORMAT_RGBA32
 // if tex dimensions are <= 0, the are linked to win dimensions
-const int  TEXTURE_WIDTH    = -1;
-const int  TEXTURE_HEIGHT   = -1;
+const int  TEXTURE_WIDTH    = 178;
+const int  TEXTURE_HEIGHT   = 100;
 const int  WINDOW_WIDTH     = 1280;
 const int  WINDOW_HEIGHT    = 720;
 const int  WINDOW_POS_X     = SDL_WINDOWPOS_CENTERED;
@@ -53,7 +53,6 @@ Display::Display() {
         throwSDLError("SDL_AllocFormat()");
     }
 }
-
 Display::~Display() {
     cleanup(m_renderer, m_window, m_raster, m_format);
 }
@@ -74,6 +73,7 @@ void Display::getTextureDimensions(int &width, int &height) {
 
 void Display::setWindowName(std::string name) {
     m_window_name = name;
+    SDL_SetWindowTitle(m_window, m_window_name.c_str());
 }
 void Display::showMetaCounter(bool setting) {
     m_show_meta = setting;
