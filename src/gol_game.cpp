@@ -15,21 +15,19 @@ Game::Game() {
     m_generations.emplace_back(Board());
 
     // hook 1
-    m_generations.back().setAlive(0, -1);
     m_generations.back().setAlive(-1, -1);
     m_generations.back().setAlive(-1, 0);
     m_generations.back().setAlive(-1, 1);
     // hook 1
-    m_generations.back().setAlive(0, 2);
     m_generations.back().setAlive(1, 2);
     m_generations.back().setAlive(1, 1);
     m_generations.back().setAlive(1, 0);
 
     // reference points
-    m_generations.back().setAlive(-10, -10);
-    m_generations.back().setAlive(10, -10);
-    m_generations.back().setAlive(-10, 10);
-    m_generations.back().setAlive(10, 10);
+    //m_generations.back().setAlive(-10, -10);
+    //m_generations.back().setAlive(10, -10);
+    //m_generations.back().setAlive(-10, 10);
+    //m_generations.back().setAlive(10, 10);
 }
 Game::~Game() {
 }

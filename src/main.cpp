@@ -39,12 +39,19 @@ int main(int argc, const char* argv[]) {
         // set position offset for moving across the game board
         game.setPosition(state.x_pos, state.y_pos);
 
-        if (state.generationMovement == PREV_GEN) {
-            game.prevGeneration();
-            state.generationMovement = CURR_GEN;
-        } else if (state.generationMovement == NEXT_GEN) {
-            game.nextGeneration();
-            state.generationMovement = CURR_GEN;
+        // apply movement through gol generations w/ regulated animation delta
+        const unsigned animationDelta = 64;
+        static unsigned lastAnimation = SDL_GetTicks();
+        if (SDL_GetTicks() - lastAnimation >= animationDelta || state.maxSpeed) {
+            if (state.generationMovement == PREV_GEN) {
+                game.prevGeneration();
+                state.generationMovement = CURR_GEN;
+                lastAnimation = SDL_GetTicks();
+            } else if (state.generationMovement == NEXT_GEN) {
+                game.nextGeneration();
+                state.generationMovement = CURR_GEN;
+                lastAnimation = SDL_GetTicks();
+            }
         }
 
         game.refresh();

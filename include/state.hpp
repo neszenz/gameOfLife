@@ -8,8 +8,9 @@ enum GenerationMovement{PREV_GEN, CURR_GEN, NEXT_GEN};
 const std::string WINDOW_NAME  = "Conway's Game of Life";
 
 struct State {
-    bool quit = false;
     bool reset = false;
+    bool maxSpeed = false;
+    bool quit = false;
 
     enum GenerationMovement generationMovement = CURR_GEN;
 
