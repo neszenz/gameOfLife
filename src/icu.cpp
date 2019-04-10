@@ -10,6 +10,9 @@ static void handleKeyEvent(SDL_Event &e) {
         case SDLK_r:
             state.reset = true;
             break;
+        case SDLK_s:
+            state.maxSpeed = (state.maxSpeed)? false : true;
+            break;
         // zoom
         case SDLK_k:
             state.zoom--;
