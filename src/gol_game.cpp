@@ -14,47 +14,16 @@ Game::Game() {
     // create initial generation
     m_generations.emplace_back(Board());
 
-    // glider 1
-    m_generations.back().setAlive(-5, -4);
-    m_generations.back().setAlive(-4, -3);
-    m_generations.back().setAlive(-3, -3);
-    m_generations.back().setAlive(-3, -4);
-    m_generations.back().setAlive(-3, -5);
-    // glider 2
-    m_generations.back().setAlive(5, -4);
-    m_generations.back().setAlive(4, -3);
-    m_generations.back().setAlive(3, -3);
-    m_generations.back().setAlive(3, -4);
-    m_generations.back().setAlive(3, -5);
-    // glider 3
-    m_generations.back().setAlive(-5, 4);
-    m_generations.back().setAlive(-4, 3);
-    m_generations.back().setAlive(-3, 3);
-    m_generations.back().setAlive(-3, 4);
-    m_generations.back().setAlive(-3, 5);
-    // glider 4
-    m_generations.back().setAlive(5, 4);
-    m_generations.back().setAlive(4, 3);
-    m_generations.back().setAlive(3, 3);
-    m_generations.back().setAlive(3, 4);
-    m_generations.back().setAlive(3, 5);
-
-    // line 1
-    m_generations.back().setAlive(-1, -10);
-    m_generations.back().setAlive(0, -10);
-    m_generations.back().setAlive(1, -10);
-    // line 2
-    m_generations.back().setAlive(-10, 1);
-    m_generations.back().setAlive(-10, 0);
-    m_generations.back().setAlive(-10, -1);
-    // line 3
-    m_generations.back().setAlive(10, 1);
-    m_generations.back().setAlive(10, 0);
-    m_generations.back().setAlive(10, -1);
-    // line 4
-    m_generations.back().setAlive(-1, 10);
-    m_generations.back().setAlive(0, 10);
-    m_generations.back().setAlive(1, 10);
+    // hook 1
+    m_generations.back().setAlive(0, -1);
+    m_generations.back().setAlive(-1, -1);
+    m_generations.back().setAlive(-1, 0);
+    m_generations.back().setAlive(-1, 1);
+    // hook 1
+    m_generations.back().setAlive(0, 2);
+    m_generations.back().setAlive(1, 2);
+    m_generations.back().setAlive(1, 1);
+    m_generations.back().setAlive(1, 0);
 
     // reference points
     m_generations.back().setAlive(-10, -10);
