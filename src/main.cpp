@@ -39,9 +39,12 @@ int main(int argc, const char* argv[]) {
         // set position offset for moving across the game board
         game.setPosition(state.x_pos, state.y_pos);
 
-        if (state.play) {
-            game.playOneRound();
-            state.play = false;
+        if (state.generationMovement == PREV_GEN) {
+            game.prevGeneration();
+            state.generationMovement = CURR_GEN;
+        } else if (state.generationMovement == NEXT_GEN) {
+            game.nextGeneration();
+            state.generationMovement = CURR_GEN;
         }
 
         game.refresh();

@@ -24,7 +24,7 @@ namespace gol {
             void setAlive(int x, int y);
             void setDead(int x, int y);
 
-            void computeNextGeneration();
+            Board computeNextGeneration();
 
         private:
             struct Cell {
@@ -46,6 +46,8 @@ namespace gol {
             void insertCell(int x, int y, bool isAlive);
 
             void setCellStatus(int x, int y, int isAlive);
+
+            int numOfAliveNeighbors(int x, int y);
     };
 
 }

@@ -11,14 +11,21 @@ Game::Game() {
     m_display.setWindowName("Conway's Game of Life");
     m_display.showMetaCounter(true);
 
-    m_board.setAlive(-1, 0);
-    m_board.setAlive(0, 0);
-    m_board.setAlive(1, 0);
+    // create initial generation
+    m_generations.emplace_back(Board());
 
-    m_board.setAlive(-10, -10);
-    m_board.setAlive(10, -10);
-    m_board.setAlive(-10, 10);
-    m_board.setAlive(10, 10);
+    // glider
+    m_generations.back().setAlive(0, 0);
+    m_generations.back().setAlive(1, 1);
+    m_generations.back().setAlive(2, 1);
+    m_generations.back().setAlive(2, 0);
+    m_generations.back().setAlive(2, -1);
+
+    // reference points
+    m_generations.back().setAlive(-10, -10);
+    m_generations.back().setAlive(10, -10);
+    m_generations.back().setAlive(-10, 10);
+    m_generations.back().setAlive(10, 10);
 }
 Game::~Game() {
 }
@@ -32,8 +39,21 @@ void Game::setPosition(int x, int y) {
     m_y_offset = y;
 }
 
-void Game::playOneRound() {
-    m_board.computeNextGeneration();
+void Game::nextGeneration() {
+    if (m_currGenId + 1 <= m_maxGenId) {
+        m_currGenId++;
+        return;
+    }
+
+    m_generations.emplace_back(m_generations.at(m_currGenId).computeNextGeneration());
+    m_currGenId++;
+    m_maxGenId++;
+}
+
+void Game::prevGeneration() {
+    if (m_currGenId - 1 >= 0) {
+        m_currGenId--;
+    }
 }
 
 void Game::refresh() {
@@ -66,7 +86,7 @@ void Game::drawBoardToDisplay() {
             int x_board = (width / 2) + m_x_offset;
             int y_board = (height / 2) + m_y_offset;
 
-            if (m_board.isAlive(x - x_board, y - y_board)) {
+            if (m_generations.at(m_currGenId).isAlive(x - x_board, y - y_board)) {
                 pixels[y * width + x] = m_aliveCell.toUint32();
             } else {
                 pixels[y * width + x] = m_deadCell.toUint32();

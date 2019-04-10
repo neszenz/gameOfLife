@@ -7,9 +7,6 @@ static void handleKeyEvent(SDL_Event &e) {
         case SDLK_ESCAPE:
             state.quit = true;
             break;
-        case SDLK_SPACE:
-            state.play = true;
-            break;
         case SDLK_r:
             state.reset = true;
             break;
@@ -20,7 +17,14 @@ static void handleKeyEvent(SDL_Event &e) {
         case SDLK_j:
             state.zoom++;
             break;
-        // movement
+        // generation movement
+        case SDLK_h:
+            state.generationMovement = PREV_GEN;
+            break;
+        case SDLK_l:
+            state.generationMovement = NEXT_GEN;
+            break;
+        // raster movement
         case SDLK_UP:
             state.y_pos++;
             break;
