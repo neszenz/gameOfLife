@@ -5,6 +5,7 @@
 
 #include "brd_display.hpp"
 #include "brd_pixel.hpp"
+#include "brd_util.hpp"
 #include "gol_board.hpp"
 
 namespace gol {

@@ -15,29 +15,46 @@ Game::Game() {
     m_generations.emplace_back(Board());
 
     // glider 1
-    m_generations.back().setAlive(-5, -5);
-    m_generations.back().setAlive(-4, -4);
+    m_generations.back().setAlive(-5, -4);
+    m_generations.back().setAlive(-4, -3);
+    m_generations.back().setAlive(-3, -3);
     m_generations.back().setAlive(-3, -4);
     m_generations.back().setAlive(-3, -5);
-    m_generations.back().setAlive(-3, -6);
     // glider 2
-    m_generations.back().setAlive(5, -5);
-    m_generations.back().setAlive(4, -4);
+    m_generations.back().setAlive(5, -4);
+    m_generations.back().setAlive(4, -3);
+    m_generations.back().setAlive(3, -3);
     m_generations.back().setAlive(3, -4);
     m_generations.back().setAlive(3, -5);
-    m_generations.back().setAlive(3, -6);
     // glider 3
-    m_generations.back().setAlive(-5, 5);
-    m_generations.back().setAlive(-4, 4);
+    m_generations.back().setAlive(-5, 4);
+    m_generations.back().setAlive(-4, 3);
+    m_generations.back().setAlive(-3, 3);
     m_generations.back().setAlive(-3, 4);
     m_generations.back().setAlive(-3, 5);
-    m_generations.back().setAlive(-3, 6);
     // glider 4
-    m_generations.back().setAlive(5, 5);
-    m_generations.back().setAlive(4, 4);
+    m_generations.back().setAlive(5, 4);
+    m_generations.back().setAlive(4, 3);
+    m_generations.back().setAlive(3, 3);
     m_generations.back().setAlive(3, 4);
     m_generations.back().setAlive(3, 5);
-    m_generations.back().setAlive(3, 6);
+
+    // line 1
+    m_generations.back().setAlive(-1, -10);
+    m_generations.back().setAlive(0, -10);
+    m_generations.back().setAlive(1, -10);
+    // line 2
+    m_generations.back().setAlive(-10, 1);
+    m_generations.back().setAlive(-10, 0);
+    m_generations.back().setAlive(-10, -1);
+    // line 3
+    m_generations.back().setAlive(10, 1);
+    m_generations.back().setAlive(10, 0);
+    m_generations.back().setAlive(10, -1);
+    // line 4
+    m_generations.back().setAlive(-1, 10);
+    m_generations.back().setAlive(0, 10);
+    m_generations.back().setAlive(1, 10);
 
     // reference points
     m_generations.back().setAlive(-10, -10);
@@ -92,6 +109,9 @@ void Game::refresh() {
 }
 
 void Game::drawBoardToDisplay() {
+    std::string windowName = "Conway's Game of Life (" + ToString(m_currGenId) + ") ";
+    m_display.setWindowName(windowName);
+
     Uint32* pixels;
     m_display.lock(&pixels);
 
