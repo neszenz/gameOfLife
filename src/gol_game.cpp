@@ -14,12 +14,30 @@ Game::Game() {
     // create initial generation
     m_generations.emplace_back(Board());
 
-    // glider
-    m_generations.back().setAlive(0, 0);
-    m_generations.back().setAlive(1, 1);
-    m_generations.back().setAlive(2, 1);
-    m_generations.back().setAlive(2, 0);
-    m_generations.back().setAlive(2, -1);
+    // glider 1
+    m_generations.back().setAlive(-5, -5);
+    m_generations.back().setAlive(-4, -4);
+    m_generations.back().setAlive(-3, -4);
+    m_generations.back().setAlive(-3, -5);
+    m_generations.back().setAlive(-3, -6);
+    // glider 2
+    m_generations.back().setAlive(5, -5);
+    m_generations.back().setAlive(4, -4);
+    m_generations.back().setAlive(3, -4);
+    m_generations.back().setAlive(3, -5);
+    m_generations.back().setAlive(3, -6);
+    // glider 3
+    m_generations.back().setAlive(-5, 5);
+    m_generations.back().setAlive(-4, 4);
+    m_generations.back().setAlive(-3, 4);
+    m_generations.back().setAlive(-3, 5);
+    m_generations.back().setAlive(-3, 6);
+    // glider 4
+    m_generations.back().setAlive(5, 5);
+    m_generations.back().setAlive(4, 4);
+    m_generations.back().setAlive(3, 4);
+    m_generations.back().setAlive(3, 5);
+    m_generations.back().setAlive(3, 6);
 
     // reference points
     m_generations.back().setAlive(-10, -10);

@@ -94,7 +94,7 @@ Board Board::computeNextGeneration() {
         // revive neighbor cell if is has 3 alive neighbors
         for (int iY = cell.y-1; iY <= cell.y+1; iY++) {
             for (int iX = cell.x-1; iX <= cell.x+1; iX++) {
-                if (iY == 0 && iX == 0) {
+                if (iY == cell.x && iX == cell.y) {
                     continue;
                 }
 
